@@ -1,5 +1,6 @@
-gradio==5.49.1
-transformers==4.40.0
-torch>=2.0.1
-sentencepiece==0.1.99
-langdetect==1.0.9
+gradio
+transformers==4.56.0
+torch>=2.0.0
+sentencepiece
+langdetect
+markdown
