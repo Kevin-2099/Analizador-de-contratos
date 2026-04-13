@@ -4,3 +4,6 @@ torch>=2.0.0
 sentencepiece
 langdetect
 markdown
+pdfplumber        
+python-docx                    
+matplotlib   
