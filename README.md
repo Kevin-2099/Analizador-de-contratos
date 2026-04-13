@@ -1,128 +1,125 @@
-# 📑 Contract Analyzer / Analizador de Contratos
+# 📑 Contract Analyzer AI / Analizador de Contratos
 
-Este proyecto es una aplicación interactiva construida con Gradio, diseñada para analizar textos contractuales en español e inglés, generar un resumen ejecutivo, identificar cláusulas clave, calcular un score global de riesgo y comparar versiones de contratos.
+Aplicación avanzada de análisis contractual construida con Gradio. Permite analizar contratos de forma automática, detectar riesgos, identificar cláusulas clave, extraer información relevante y comparar versiones con visualización profesional tipo dashboard.
 
 ## 🚀 Funcionalidades
-- 🔍 Detección automática de idioma
-
-  - El sistema utiliza langdetect para determinar si el contrato está en español o inglés, y aplica listas de palabras clave específicas por idioma.
-
-- 🧠 Resumen automático
-
-  - Genera un resumen ejecutivo claro y conciso utilizando el modelo sshleifer/distilbart-cnn-12-6 de Transformers.
-
+- 🌍 Multi-idioma inteligente
+  - Detección automática o manual del idioma
+  - Soporte para:
+    - 🇪🇸 Español
+    - 🇬🇧 Inglés
+    - 🇫🇷 Francés
+    - 🇵🇹 Portugués
+- 📂 Soporte de archivos
+  - Analiza contratos desde:
+    - .txt
+    - .pdf
+    - .docx
+  - También puedes pegar el texto manualmente
+- 📊 Dashboard visual profesional
+  - Interfaz moderna con:
+    - Score de riesgo con barra visual
+    - Tarjetas por tipo de cláusula
+    - Estadísticas del documento
+    - Visualización clara de resultados
 - 🧩 Extracción de cláusulas
-
-  - Identifica y organiza información relevante en categorías estándar:
-
-    - 📆 Fechas
-    
+  - Identifica automáticamente:
     - 💰 Pagos
-    
     - ⚠️ Penalizaciones
-    
     - 📌 Obligaciones
-    
     - 🔒 Confidencialidad
-    
-    - ❌ Términos de terminación
-
-  - Cada cláusula incluye una referencia de frase [Ref X] para localizarla fácilmente en el texto original.
-
+    - ❌ Terminación
+  - Cada cláusula incluye referencia:
+    - [Ref X]
 - 🚨 Detección de riesgos
-
-  - Detecta frases relacionadas con riesgos contractuales y las clasifica según su severidad:
-
+  - Clasificación automática por severidad:
     - 🟢 Bajo
-    
     - 🟡 Moderado
-    
     - 🔴 Alto
-    
     - 💀 Crítico
-
-  - El sistema ignora riesgos en contextos seguros, como acuerdos mutuos o cláusulas opcionales. Además, calcula un score global de riesgo que resume el nivel general del contrato.
-
-- 📋 Checklist legal
-
-  - Genera un checklist rápido de las cláusulas presentes o ausentes en el contrato con ✅ o ✗.
-
-- 🔍 Comparación de contratos
-
-  - Permite comparar dos versiones de un contrato resaltando visualmente:
-
-    - Texto eliminado (rojo)
-    
-    - Texto añadido (verde)
-
-  - Esto facilita la revisión de cambios entre versiones.
-
-- 🧾 Reporte estructurado
-
-  - El informe final incluye:
-
-    - Resumen ejecutivo
-    
-    - Fechas detectadas
-    
-    - Cláusulas clasificadas con referencias
-    
-    - Riesgos potenciales con nivel y referencia
-    
-    - Checklist legal
-    
+  - ✔️ Incluye:
+    - Lista de riesgos detectados
+    - Distribución visual
     - Score global de riesgo
+- 🚫 Detección de cláusulas abusivas
+  - Identifica patrones problemáticos como:
+    - “a sola discreción”
+    - “sin previo aviso”
+    - “renovación automática”
+    - “sin responsabilidad”
+- 📅 Extracción de información clave
+  - Detecta automáticamente:
+    - 📅 Fechas y plazos
+    - 💰 Montos económicos
+    - 👥 Partes del contrato
+- 📈 Visualización de datos
+  - Gráfico de barras → cláusulas por tipo
+  - Gráfico circular → distribución de riesgos
+- 📋 Checklist legal automático
+  - Verifica presencia de cláusulas clave
+  - Resultado visual:
+    - ✅ Presente
+    - ✗ Ausente
+- 🔍 Comparador de contratos avanzado
+  - Comparación lado a lado
+  - Resalta:
+    - ➕ Añadidos
+    - ➖ Eliminados
+    - ✏️ Modificados
+  - Incluye:
+    - % de similitud
+    - Métricas de cambios
+    - Opción: mostrar solo diferencias
+- 📤 Exportación de resultados
+    - 📄 HTML (informe completo)
+    - 📊 CSV (datos estructurados)
+    - 🧾 Informe estructurado
 
-  - Además, se puede exportar el informe a HTML para compartir o guardar.
-
+  Incluye:
+    - Resumen ejecutivo
+    - Estadísticas del documento
+    - Partes identificadas
+    - Fechas y montos
+    - Cláusulas clasificadas
+    - Riesgos detectados
+    - Cláusulas abusivas
+    - Checklist legal
+    - Score global de riesgo
 ## 🛠️ Tecnologías utilizadas
-
-- Python 3.10+
-
-- Gradio
-
-- Transformers (Hugging Face)
-
-- langdetect
-
-- Regex
-
-- Difflib (SequenceMatcher)
-
-- Pipeline de summarization
-
+  - Python 3.10+
+  - Gradio
+  - langdetect
+  - Regex
+  - Difflib (SequenceMatcher)
+  - Matplotlib
+  - pdfplumber (opcional)
+  - python-docx (opcional)
 ## ⚡ Uso
-
-- Copia y pega un texto de contrato en el cuadro izquierdo.
-
-- Haz clic en “Analizar”.
-
-- En el lado derecho aparecerá:
-
-  - Resumen ejecutivo
-  
-  - Fechas detectadas
-  
-  - Cláusulas con referencias
-  
-  - Riesgos potenciales con nivel
-  
-  - Checklist legal
-  
-  - Score global de riesgo
-
-- Opcional: exporta el informe a HTML.
-
-- Para comparar contratos, pega dos versiones y haz clic en “Comparar” para ver las diferencias resaltadas.
-
+- 🔍 Análisis
+  - Sube un archivo o pega el contrato
+  - Selecciona idioma (o auto)
+  - Haz clic en Analizar
+  - Visualiza:
+    - Dashboard
+    - Informe
+    - Gráficos
+- 🔍 Comparación
+  - Pega dos contratos
+  - (Opcional) activa “solo diferencias”
+  - Haz clic en Comparar
+- 📤 Exportación
+  - Exporta el análisis en:
+    - HTML
+    - CSV
 ## 💡 Notas
-
-Este Space no reemplaza a un abogado.
-
-Es una herramienta de apoyo para extracción rápida de información.
-
-El análisis se basa en coincidencias por palabras clave y modelos estadísticos.
-
+  - Esta herramienta no sustituye asesoramiento legal profesional
+  - Diseñada para:
+    - Análisis rápido
+    - Revisión preliminar
+    - Apoyo en lectura de contratos
+  - El sistema se basa en:
+    - Reglas heurísticas (keywords + regex)
+    - Procesamiento automático de texto
 ## 📄 Licencia
 
 Este proyecto se distribuye bajo una **licencia propietaria con acceso al código (source-available)**.
