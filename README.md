@@ -1,4 +1,4 @@
-# 📑 Contract Analyzer AI / Analizador de Contratos
+# 📑 Contract Analyzer / Analizador de Contratos
 
 Aplicación avanzada de análisis contractual construida con Gradio. Permite analizar contratos de forma automática, detectar riesgos, identificar cláusulas clave, extraer información relevante y comparar versiones con visualización profesional tipo dashboard.
 
