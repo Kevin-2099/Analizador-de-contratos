@@ -42,8 +42,6 @@ LANG_LABELS = {"auto": "🌐 Auto", "es": "🇪🇸 Español", "en": "🇬🇧 E
                "fr": "🇫🇷 Français", "pt": "🇵🇹 Português"}
 
 # ── Keywords per clause per language ─────────────────────────────────────────
-# NOTE: 6 new clause types added — jurisdiccion, fuerza_mayor, propiedad_intelectual,
-# limitacion_responsabilidad, no_competencia, cesion.
 KEYWORDS: dict[str, dict[str, list[str]]] = {
     "es": {
         "pagos":          ["pago","pagará","abonará","monto","importe","tarifa","honorario",
@@ -442,7 +440,7 @@ def detectar_vigencia(texto: str, lang: str) -> dict | None:
                     return {"fecha": fecha_str, "fecha_dt": dt, "dias_restantes": dias, "frase": f}
     return None
 
-# ── NEW: Feature 7 — Definiciones ─────────────────────────────────────────────
+# Definiciones ─────────────────────────────────────────────
 
 def extraer_definiciones(texto: str) -> list[dict]:
     m = re.search(r'(?:definiciones|definitions|défini[cç][aã]?o(?:es)?)\s*[:\.]?\s*\n?(.{0,3000})',
@@ -462,7 +460,7 @@ def extraer_definiciones(texto: str) -> list[dict]:
             out.append({"termino": term.strip(), "definicion": definicion.strip()})
     return out[:20]
 
-# ── NEW: Feature 8 — Contradicciones internas ─────────────────────────────────
+# Contradicciones internas ─────────────────────────────────
 
 def detectar_contradicciones(clausulas: dict) -> list[dict]:
     contradicciones = []
@@ -476,7 +474,7 @@ def detectar_contradicciones(clausulas: dict) -> list[dict]:
             contradicciones.append({"tipo": ctype, "valores": valores})
     return contradicciones
 
-# ── NEW: Feature 10 — Legibilidad (Fernández-Huerta, aproximado) ─────────────
+# Legibilidad (Fernández-Huerta, aproximado) ─────────────
 
 _VOWELS_RE = re.compile(r'[aeiouáéíóúüAEIOUÁÉÍÓÚÜ]+')
 
@@ -743,7 +741,7 @@ def generar_dashboard(clausulas, riesgos, checklist, score, abusivas, fechas, mo
 </div>"""
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# NEW: Feature 2 — Vista con resaltado inline sobre el texto completo
+# Vista con resaltado inline sobre el texto completo
 # ═══════════════════════════════════════════════════════════════════════════════
 
 def generar_texto_resaltado(frases, clausulas, riesgos, abusivas, lang) -> str:
@@ -979,7 +977,7 @@ def exportar_csv(clausulas: dict, riesgos: list) -> str | None:
     return tmp.name
 
 
-# ── NEW: Feature 6 — Exportación real a Word con estilos y colores ───────────
+# Exportación real a Word con estilos y colores ───────────
 
 def _set_cell_background(cell, color_hex: str):
     shd = OxmlElement("w:shd")
@@ -1043,7 +1041,7 @@ def exportar_docx(resultado: dict) -> str | None:
     return tmp.name
 
 
-# ── NEW: Feature 6 — Exportación real a Excel con formato condicional ────────
+#  Exportación real a Excel con formato condicional ────────
 
 def exportar_xlsx(resultado: dict) -> str | None:
     if not XLSX_SUPPORT or not resultado:
@@ -1230,7 +1228,7 @@ def analizar_contrato(texto, archivo, lang_manual, tipo_contrato,
     return md, dashboard, grafico, resaltado, clausulas_totales, riesgos, resultado
 
 
-# ── NEW: Feature 5 — Análisis multi-archivo / cartera ─────────────────────────
+# Análisis multi-archivo / cartera ─────────────────────────
 
 def analizar_cartera(archivos, lang_manual, tipo_contrato,
                       peso_bajo, peso_moderado, peso_alto, peso_critico,
